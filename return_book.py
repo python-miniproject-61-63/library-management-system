@@ -4,7 +4,6 @@ import mysql.connector as db
 
 
 def return_book():
-    # global bookInfo1,bookInfo2,bookInfo3,bookInfo4,Canvas1,con,cur,bookTable,root
 
     root = Tk()
     root.title("Library Management System - Return Book")
