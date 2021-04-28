@@ -1,6 +1,10 @@
 from tkinter import *
 from PIL import Image, ImageTk as itk
 import mysql.connector as db
+from add_book import add_book
+from issue_book import issue_book
+from search_book import search_book
+from return_book import return_book
 
 
 # Database Connection
@@ -46,16 +50,56 @@ institute.place(relx=0.5, rely=0, relwidth=0.5, relheight=1)
 
 
 # Navigation Buttons
-addBookButton = Button(content, text='          Add Book', image=addBookImage, compound=LEFT, bg="#64B6AC", fg="#FCFFFD", font=('Calibri', 16))
-addBookButton.place(relx=0.3, rely=0.1, relwidth=0.4, relheight=0.18)
+addBookButton = Button(
+    content,
+    text='\nAdd Book',
+    image=addBookImage,
+    compound=TOP,
+    bg="#64B6AC",
+    fg="#FCFFFD",
+    font=('Calibri', 16),
+    relief=FLAT,
+    command=add_book
+)
+addBookButton.place(relx=0.1, rely=0.1, relwidth=0.18, relheight=0.4)
 
-issueBookButton = Button(content, text='          Issue Book', image=issueBookImage, compound=LEFT, bg="#64B6AC", fg="#FCFFFD", font=('Calibri', 16))
-issueBookButton.place(relx=0.3, rely=0.3, relwidth=0.4, relheight=0.18)
+issueBookButton = Button(
+    content,
+    text='\nIssue Book',
+    image=issueBookImage,
+    compound=TOP,
+    bg="#64B6AC",
+    fg="#FCFFFD",
+    font=('Calibri', 16),
+    relief=FLAT,
+    command=issue_book
+)
+issueBookButton.place(relx=0.3, rely=0.1, relwidth=0.18, relheight=0.4)
 
-returnBookButton = Button(content, text='       Return Book', image=returnBookImage, compound=LEFT, bg="#64B6AC", fg="#FCFFFD", font=('Calibri', 16))
-returnBookButton.place(relx=0.3, rely=0.5, relwidth=0.4, relheight=0.18)
+returnBookButton = Button(
+    content,
+    text='\nReturn Book',
+    image=returnBookImage,
+    compound=TOP,
+    bg="#64B6AC",
+    fg="#FCFFFD",
+    font=('Calibri', 16),
+    relief=FLAT,
+    command=return_book
+)
+returnBookButton.place(relx=0.5, rely=0.1, relwidth=0.18, relheight=0.4)
 
-searchBookButton = Button(content, text='       Search Book', image=searchBookImage, compound=LEFT, bg="#64B6AC", fg="#FCFFFD", font=('Calibri', 16))
-searchBookButton.place(relx=0.3, rely=0.7, relwidth=0.4, relheight=0.18)
+searchBookButton = Button(
+    content,
+    text='\nSearch Book',
+    image=searchBookImage,
+    compound=TOP,
+    bg="#64B6AC",
+    fg="#FCFFFD",
+    font=('Calibri', 16),
+    relief=FLAT,
+    command=search_book
+)
+searchBookButton.place(relx=0.7, rely=0.1, relwidth=0.18, relheight=0.4)
 
 root.mainloop()
