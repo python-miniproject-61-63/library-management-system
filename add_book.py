@@ -5,6 +5,7 @@ import mysql.connector as db
 def increment(title, author, quantity, root):
     """ This function is used to increment the quantity of a book which already exists """
 
+    # Database Connection
     cnx = db.connect(user='root', password='', host='127.0.0.1', database='Library')
     cur = cnx.cursor()
 
@@ -24,7 +25,9 @@ def increment(title, author, quantity, root):
         cnx.rollback()
 
     cnx.close()
-    root.destroy()
+
+    if root:
+        root.destroy()
 
 
 def add(title, author, quantity, rating, root):
@@ -39,7 +42,6 @@ def add(title, author, quantity, rating, root):
         # Executing Insert query
         cur.execute(sql, val)
         cnx.commit()
-        print(cur.rowcount, "records inserted!")
     except Exception as e:
         print(e)
         cnx.rollback()
@@ -71,7 +73,6 @@ def check(title, author, quantity, rating, base_root=None):
 
     # If record exists, we give an option to increment the quantity
     if result and len(result) > 0:
-        print("Yes it exists")
         root = Tk()
         root.title("Library Management System - Confirmation")
         root.geometry("720x480")
@@ -99,24 +100,18 @@ def check(title, author, quantity, rating, base_root=None):
             fg="#FCFFFD",
             font=('Calibri', 15),
             relief=FLAT,
-            command=lambda: root.destroy()
+            command=lambda: root and root.destroy()
         )
         yes.place(relx=0.375, rely=0.6, relheight=0.1, relwidth=0.1)
         no.place(relx=0.525, rely=0.6, relheight=0.1, relwidth=0.1)
     else:
         add(title, author, quantity, rating, base_root)
 
-    base_root.destroy()
-
 
 def add_book():
     root = Tk()
     root.title("Library Management System - Add Book")
     root.geometry("720x480")
-
-    # Database Connection
-    cnx = db.connect(host="localhost", user="root", password="", database="Library")
-    cur = cnx.cursor()
 
     # Defining Header
     header = Frame(root, bg="#FCFFFD")

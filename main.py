@@ -1,15 +1,9 @@
 from tkinter import *
 from PIL import Image, ImageTk as itk
-# import mysql.connector as db
 from add_book import add_book
 from issue_book import issue_book
 from search_book import search_book
 from return_book import return_book
-
-
-# # Database Connection
-# cnx = db.connect(host="localhost", user="root", password="", database="Library")
-# cur = cnx.cursor()
 
 
 # Defining Root Widget
